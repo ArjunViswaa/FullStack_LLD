@@ -10,16 +10,23 @@ const Movies = () => {
     const [pageNo, setPageNo] = useState(1);
     const [watchList, setWatchList] = useState([]);
 
+    useEffect(() => {
+        const moviesFromLocal = JSON.parse(localStorage.getItem("IMDBWatchList"))
+        if(moviesFromLocal) {
+            setWatchList(moviesFromLocal)
+        }
+    }, [])
+
     const addToWatchList = (movie) => {
         const updatedWatchList = [...watchList, movie];  // or use watchList.concat(movie)
         setWatchList(updatedWatchList);
-        console.log(watchList)
+        localStorage.setItem("IMDBWatchList", JSON.stringify(updatedWatchList))
     }
 
     const removeFromWatchList = (movie) => {
         const updatedWatchList = watchList.filter((m) => m.id !== movie.id); // or use watchList.splice(watchList.indexOf(movie), 1)
         setWatchList(updatedWatchList);
-        console.log(watchList)
+        localStorage.setItem("IMDBWatchList", JSON.stringify(updatedWatchList))
     }
 
     useEffect(() => {
