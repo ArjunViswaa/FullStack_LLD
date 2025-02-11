@@ -7,6 +7,7 @@ import GetData from './components/GetData'
 
 import { Routes, Route } from 'react-router-dom'
 import LabelFilter from './components/LabelFilter'
+import WatchListContextWrapper from './context/WatchListContext'
 
 
 function App() {
@@ -14,12 +15,14 @@ function App() {
 
   return (
     <>
-      <LabelFilter />
-      {/* <Navbar />
-      <Routes>
-        <Route path="/" element={<GetData />} />
-        <Route path="/watchlist" element={<WatchList />} />
-      </Routes> */}
+      {/* <LabelFilter /> */}
+      <Navbar />
+      <WatchListContextWrapper>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/watchlist" element={<WatchList />} />
+        </Routes>
+      </WatchListContextWrapper>
     </>
   )
 }

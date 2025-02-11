@@ -1,33 +1,15 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Pagination from './Pagination';
 import MovieCard from './MovieCard';
 import axios from 'axios';
 import { getMoviesURL } from '../constants/globals';
+import { WatchListContext } from "../context/WatchListContext"
 
 const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [pageNo, setPageNo] = useState(1);
-    const [watchList, setWatchList] = useState([]);
-
-    useEffect(() => {
-        const moviesFromLocal = JSON.parse(localStorage.getItem("IMDBWatchList"))
-        if(moviesFromLocal) {
-            setWatchList(moviesFromLocal)
-        }
-    }, [])
-
-    const addToWatchList = (movie) => {
-        const updatedWatchList = [...watchList, movie];  // or use watchList.concat(movie)
-        setWatchList(updatedWatchList);
-        localStorage.setItem("IMDBWatchList", JSON.stringify(updatedWatchList))
-    }
-
-    const removeFromWatchList = (movie) => {
-        const updatedWatchList = watchList.filter((m) => m.id !== movie.id); // or use watchList.splice(watchList.indexOf(movie), 1)
-        setWatchList(updatedWatchList);
-        localStorage.setItem("IMDBWatchList", JSON.stringify(updatedWatchList))
-    }
+    const { watchList, addToWatchList, removeFromWatchList } = useContext(WatchListContext);
 
     useEffect(() => {
         axios.get(`${getMoviesURL}&page=${pageNo}`)
