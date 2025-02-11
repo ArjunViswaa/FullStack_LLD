@@ -8,6 +8,7 @@ import GetData from './components/GetData'
 import { Routes, Route } from 'react-router-dom'
 import LabelFilter from './components/LabelFilter'
 import WatchListContextWrapper from './context/WatchListContext'
+import Counter from './components/Counter'
 
 
 function App() {
