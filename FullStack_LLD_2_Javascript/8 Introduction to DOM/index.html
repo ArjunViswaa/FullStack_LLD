@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <button id="btn-1"> Say Hello </button>
+    <button class="btn-2"> Say Bye </button>
+
+    <button id="btn">Click Me to add Hello World</button>
+    <div>
+        <button id="addMissing">Add missing number in list</button>
+    </div>
+    <div id="myDiv" class="content visible">Hello, world!</div>
+
+    <script>
+        // Using getElementById
+        let btnElem = document.getElementById("btn-1");
+        console.log(btnElem); // shows the button
+
+        // Using querySelector...
+        let btn1 = document.querySelector("#btn-1");
+        console.log(btn1);
+
+        let btn2 = document.querySelector('.btn-2')
+        console.log(btn2)
+
+        // Target the button and attach a click event listener
+        // const clickMeBtn = document.querySelector("#btn");
+        // clickMeBtn.addEventListener("click", function (e) {
+        //     console.log("button Clicked");
+        // });
+
+        // const newElement = document.createElement("div")
+        // newElement.innerHTML = "<h3>Hello world</h3>"
+        // const body = document.querySelector("body")
+        // body.appendChild(newElement)
+
+        const clickMeBtn = document.querySelector("#btn");
+        clickMeBtn.addEventListener("click", function (e) {
+            console.log("button Clicked");
+            const newElement = document.createElement("div")
+            newElement.innerHTML = "<h3>Hello world</h3>"
+            const body = document.querySelector("body")
+            body.appendChild(newElement)
+        });
+
+        const addMissingBtn = document.querySelector("#addMissing");
+        addMissingBtn.addEventListener('click', () => {
+            let allItems = document.querySelectorAll("li");
+            // console.log(allItems);
+            const indexThatHas8 = allItems[6];
+            const sevenElement = document.createElement("li");
+            sevenElement.innerText = "7";
+            const ulNode = document.querySelector("ul")
+            ulNode.insertBefore(sevenElement, indexThatHas8)
+        })
+
+        var div = document.getElementById("myDiv");
+        // Add a new class
+        div.classList.add("highlight");
+        // Remove a class
+        div.classList.remove("visible");
+        // Check if a class exists
+        if (div.classList.contains("content")) {
+            console.log('The div has a "content" class.');
+        } else {
+            console.log('The div does not has a "content" class.');
+        }
+
+    </script>
+</body>
+
+</html>
