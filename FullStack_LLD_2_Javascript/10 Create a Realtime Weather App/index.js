@@ -9,7 +9,7 @@ const form = document.querySelector("form");
 
 async function fetchData(target) {
     try {
-        const url = `https://api.weatherapi.com/v1/current.json?key=5d9564dfb4cc4b00bbe104259242003&q=${target}&aqi=yes`;
+        const url = `https://api.weatherapi.com/v1/current.json?key=1bd9be4938484432856140041252002&q=${target}&aqi=yes`;
         const response = await fetch(url);
         const data = await response.json();
         // console.log(data);
