@@ -110,7 +110,7 @@ body {
 .modal-cont {
     height: 50vh;
     width: 45vw;
-    display: flex;
+    display: none;
     background-color: lightsalmon;
     position: absolute;
     top: 30%;
