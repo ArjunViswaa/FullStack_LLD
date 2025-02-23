@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="input_field" type="text">
+</body>
+
+<script>
+    let inputField = document.querySelector('#input_field')
+    // Function to process input
+    function processInput() {
+        console.log("Processing input...");
+    }
+
+    // Wrap the processInput function with debounce
+    const debouncedProcessInput = debounce(processInput, 2000); // Waits for 2000ms of no input before calling processInput
+
+    // Attach the debounced function to the input event
+    // Directly attach the processInput function to the input event
+    // inputField.addEventListener("keydown", processInput);
+
+    // This means the function will be called every time there's user input
+    inputField.addEventListener("keydown", debouncedProcessInput);
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction() {
+            const later = () => {
+                clearTimeout(timeout);
+                func();
+            }
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        }
+    }
+</script>
+
+</html>
