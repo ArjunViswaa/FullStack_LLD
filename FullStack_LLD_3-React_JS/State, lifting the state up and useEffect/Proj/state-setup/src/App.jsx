@@ -5,6 +5,7 @@ import TemperatureInput from './components/TemperatureInput'
 import TemperatureDisplay from './components/TemperatureDisplay'
 import Effects from './components/Effects'
 import FetchData from './components/FetchData'
+import ProductFilterApp from './components/ProductFilter'
 
 function App() {
   // const arr = useState(0);
@@ -38,7 +39,9 @@ function App() {
 
       {/* <Effects /> */}
 
-      <FetchData />
+      {/* <FetchData /> */}
+
+      <ProductFilterApp />
     </>
   )
 }
