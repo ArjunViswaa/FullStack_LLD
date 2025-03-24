@@ -9,29 +9,6 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import DeleteMovieModal from "./DeleteMovieModal";
 
 const MovieList = () => {
-  // const fakeMovies = [
-  //   {
-  //     key: "1",
-  //     poster: "Image1",
-  //     description: "Wolverine Vs Deadpool",
-  //     duration: 120,
-  //     genre: "Action",
-  //     language: "English",
-  //     releaseDate: "2024-08-01",
-  //     name: "Wolverine Vs Deadpool",
-  //   },
-  //   {
-  //     key: "2",
-  //     poster: "Image2",
-  //     description: "Wolverine Vs Deadpool",
-  //     duration: 120,
-  //     genre: "Action",
-  //     language: "English",
-  //     releaseDate: "2024-08-01",
-  //     name: "Wolverine Vs Deadpool 2",
-  //   },
-  // ];
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -147,24 +124,24 @@ const MovieList = () => {
       </div>
       <Table dataSource={movies} columns={tableHeadings} />
       {isModalOpen && (
-        <MovieForm
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-          selectedMovie={selectedMovie}
-          formType={formType}
-          setSelectedMovie={setSelectedMovie}
-          getData={getData}
-        />
-      )}
-      {isDeleteModalOpen && (
-        <DeleteMovieModal
-          isDeleteModalOpen={isDeleteModalOpen}
-          selectedMovie={selectedMovie}
-          setIsDeleteModalOpen={setIsDeleteModalOpen}
-          setSelectedMovie={setSelectedMovie}
-          getData={getData}
-        />
-      )}
+<MovieForm
+isModalOpen={isModalOpen}
+setIsModalOpen={setIsModalOpen}
+selectedMovie={selectedMovie}
+formType={formType}
+setSelectedMovie={setSelectedMovie}
+getData={getData}
+/>
+)}
+{isDeleteModalOpen && (
+<DeleteMovieModal
+isDeleteModalOpen={isDeleteModalOpen}
+selectedMovie={selectedMovie}
+setIsDeleteModalOpen={setIsDeleteModalOpen}
+setSelectedMovie={setSelectedMovie}
+getData={getData}
+/>
+)}
 
     </div>
   )

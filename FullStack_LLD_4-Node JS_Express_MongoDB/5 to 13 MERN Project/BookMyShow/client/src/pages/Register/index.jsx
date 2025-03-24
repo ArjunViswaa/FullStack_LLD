@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input, message, Radio } from "antd";
 import { Link } from "react-router-dom";
 import { RegisterUser } from '../../api/users';
 
@@ -7,14 +7,14 @@ function Register() {
   const onFinish = async (values) => {
     try {
       const response = await RegisterUser(values);
-      if(response.success) {
+      if (response.success) {
         message.success(response.message);
         alert("Success : " + response.message);
       } else {
         message.error(response.message);
         alert("Error : " + response.message);
       }
-    } catch(err) {
+    } catch (err) {
       message.error(err.message);
       alert("Error : " + err.message);
     }
@@ -79,6 +79,22 @@ function Register() {
                 style={{ fontSize: "1rem", fontWeight: "600" }}
               >Register Now
               </Button>
+            </Form.Item>
+
+            <Form.Item
+              label="Register as a Partner"
+              htmlFor="role"
+              name="role"
+              className="d-block text-center"
+              initialValue={false}
+              rules={[{ required: true, message: "Please select an option!" }]}
+            >
+              <div className="d-flex justify-content-start">
+                <Radio.Group name="radiogroup" className="flex-start">
+                  <Radio value={"partner"}>Yes</Radio>
+                  <Radio value={"user"}>No</Radio>
+                </Radio.Group>
+              </div>
             </Form.Item>
           </Form>
           <div>
