@@ -97,8 +97,14 @@ function ProtectedRoute({ children }) {
             }}
           >
             <h3
-              className="text-white m-0"
-              style={{ color: "white" }}
+              className="text-white m-0 cursor-pointer"
+              style={{ color: "white", transition: "transform 0.5s" }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "scale(1.25)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+              }}
               onClick={() => {
                 navigate("/");
               }}

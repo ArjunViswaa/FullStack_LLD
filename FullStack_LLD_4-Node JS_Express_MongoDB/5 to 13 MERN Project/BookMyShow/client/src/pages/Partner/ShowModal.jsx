@@ -13,7 +13,7 @@ import {
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../../redux/loaderSlice";
 import { getAllMovies } from "../../api/movies";
-import { addShow, getShowsByTheatre, updateShow } from "../../api/show";
+import { addShow, deleteShow, getShowsByTheatre, updateShow } from "../../api/show";
 import {
     ArrowLeftOutlined,
     EditOutlined,
@@ -89,6 +89,7 @@ const ShowModal = ({
                                 setSelectedShow({
                                     ...data,
                                     date: moment(data.date).format("YYYY-MM-DD"),
+                                    movie: data.movie._id
                                 });
                             }}
                         >
@@ -167,7 +168,22 @@ const ShowModal = ({
         setSelectedTheatre(null);
     };
 
-    const handleDelete = () => { };
+    const handleDelete = async (showId) => {
+        try {
+            dispatch(ShowLoading());
+            const response = await deleteShow({ showId: showId });
+            if (response.success) {
+                message.success(response.message);
+                getData();
+            } else {
+                message.error(response.message);
+            }
+        } catch (err) {
+            message.error(err.message);
+        } finally {
+            dispatch(HideLoading());
+        }
+    };
 
     useEffect(() => {
         getData();

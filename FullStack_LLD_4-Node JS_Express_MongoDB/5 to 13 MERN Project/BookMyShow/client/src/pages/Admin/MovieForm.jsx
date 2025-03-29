@@ -99,6 +99,7 @@ const MovieForm = ({
                                         placeholder="Select Language"
                                         options={[
                                             { value: "English", label: "English" },
+                                            { value: "Tamil", label: "Tamil" },
                                             { value: "Hindi", label: "Hindi" },
                                             { value: "Punjabi", label: "Punjabi" },
                                             { value: "Telugu", label: "Telugu" },
