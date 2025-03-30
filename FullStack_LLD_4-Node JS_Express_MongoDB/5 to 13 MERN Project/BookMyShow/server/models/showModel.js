@@ -42,5 +42,5 @@ const showSchema = new mongoose.Schema(
     }
 );
 
-const show = mongoose.model("shows", showSchema);
+const show = mongoose.model("bmsshows", showSchema);
 module.exports = show;

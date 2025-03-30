@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin";
 import Partner from "./pages/Partner";
-import Profile from "./pages/Profile";
+import User from "./pages/User";
 import SingleMovie from "./pages/Booking/SingleMovie";
 import BookShow from "./pages/Booking/BookShow";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -40,7 +40,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            <Route path="/profile" element={<ProtectedRoute><User /></ProtectedRoute>} />
             <Route path="/partner" element={<ProtectedRoute><Partner /></ProtectedRoute>} />
           </Routes>
         </BrowserRouter>
