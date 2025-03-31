@@ -78,17 +78,17 @@ const getAllBookings = async (req, res) => {
             .populate("user")
             .populate("show")
             .populate({
-                path: "show",
+                path: "bmsshows",
                 populate: {
                     path: "movie",
-                    model: "movie",
+                    model: "bmsmovies",
                 },
             })
             .populate({
                 path: "show",
                 populate: {
                     path: "theatre",
-                    model: "theatres",
+                    model: "bmstheatres",
                 },
             });
 
