@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const { axiosInstance } = require("./index");
 
 // Register a new User...
@@ -27,5 +29,23 @@ export const GetCurrentUser = async () => {
         return response.data;
     } catch(err) {
         console.log(err);
+    }
+}
+
+export const ForgetPassword = async (values) => {
+    try {
+        const response = await axiosInstance.post("api/users/forgetpassword", values);
+        return response.data;
+    } catch(err) {
+        return err;
+    }
+}
+
+export const ResetPassword = async (values) => {
+    try {
+        const response = await axiosInstance.post("api/users/resetPassword" ,values);
+        return response.data;
+    } catch(err) {
+        return err;
     }
 }

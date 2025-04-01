@@ -11,7 +11,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import '@ant-design/v5-patch-for-react-19';
-
+import Forget from "./pages/Forget";
+import Reset from "./pages/Reset";
 import './App.css';
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
             />
             <Route path="/profile" element={<ProtectedRoute><User /></ProtectedRoute>} />
             <Route path="/partner" element={<ProtectedRoute><Partner /></ProtectedRoute>} />
+            <Route path="/forget" element={<Forget />} />
+            <Route path="/reset" element={<Reset />} />
           </Routes>
         </BrowserRouter>
       </Provider>

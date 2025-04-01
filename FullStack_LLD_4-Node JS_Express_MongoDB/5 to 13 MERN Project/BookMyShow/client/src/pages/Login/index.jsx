@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import FormItem from 'antd/es/form/FormItem';
@@ -6,10 +6,16 @@ import { LoginUser } from "../../api/users";
 
 function Login() {
   const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/");
+    }
+  }, []);
+  
   const onFinish = async (values) => {
     try {
       const response = await LoginUser(values);
-      if(response.success) {
+      if (response.success) {
         message.success(response.message);
         alert("Success : " + response.message);
         localStorage.setItem("token", response.data);
@@ -18,7 +24,7 @@ function Login() {
         message.error(response.message);
         alert("Error : " + response.message);
       }
-    } catch(err) {
+    } catch (err) {
       message.error(err.message);
       alert("Error : " + err.message);
     }
@@ -60,11 +66,11 @@ function Login() {
             </FormItem>
 
             <FormItem className='d-block'>
-              <Button 
+              <Button
                 type='primary'
                 block
                 htmlType='submit'
-                style={{fontSize: "1rem", fontWeight: "600"}}
+                style={{ fontSize: "1rem", fontWeight: "600" }}
               >Submit Form</Button>
             </FormItem>
 
@@ -72,6 +78,9 @@ function Login() {
           <div>
             <p>
               New User ? <Link to="/register">Register Here!</Link>
+            </p>
+            <p>
+              Forgot Password? <Link to="/forget">Click Here</Link>
             </p>
           </div>
         </section>
