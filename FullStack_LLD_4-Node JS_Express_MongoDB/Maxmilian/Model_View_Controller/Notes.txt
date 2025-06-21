@@ -1,0 +1,5 @@
+MVC - Separation of concerns
+
+Models - Represent your data, works with your data.
+Views - What the user sees, decoupled from the application code.
+Controller - Connecting your models to views, contains in-between login.
